@@ -1,4 +1,4 @@
-package com.example.process.data.network.response
+package com.example.marvelapp.presentation.framework.network.response
 
 data class CharacterResponse(
     val id: Int,

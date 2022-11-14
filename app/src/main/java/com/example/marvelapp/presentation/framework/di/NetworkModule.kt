@@ -1,7 +1,7 @@
 package com.example.marvelapp.presentation.framework.di
 
 import com.example.marvelapp.BuildConfig
-import com.example.process.data.network.interceptor.AuthorizationInterceptor
+import com.example.marvelapp.presentation.framework.network.interceptor.AuthorizationInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

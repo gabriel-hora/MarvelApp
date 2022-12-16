@@ -1,6 +1,7 @@
 package com.example.marvelapp.presentation.framework.di
 
 import com.example.marvelapp.BuildConfig
+import com.example.marvelapp.presentation.framework.network.MarvelAPI
 import com.example.marvelapp.presentation.framework.network.interceptor.AuthorizationInterceptor
 import dagger.Module
 import dagger.Provides
@@ -19,6 +20,7 @@ object NetworkModule {
 
     private const val TIMEOUT_SECONDS = 15L
 
+    // Coloca em LOG todas as etapas de requisição em nível de DEBUG
     @Provides
     fun provideLoggingInterceptor(): HttpLoggingInterceptor {
         return HttpLoggingInterceptor().apply {
@@ -61,11 +63,12 @@ object NetworkModule {
     fun provideRetrofit(
         okHttpClient: OkHttpClient,
         converterFactory: GsonConverterFactory
-    ): Retrofit {
+    ): MarvelAPI {
         return Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(converterFactory)
             .build()
+            .create(MarvelAPI::class.java)
     }
 }
